@@ -1,0 +1,12 @@
+export { default as Home } from './Home';
+export { default as CompressImage } from './CompressImage';
+export { default as MergePDF } from './MergePDF';
+export { default as FileConverter } from './FileConverter';
+export { default as BMICalculator } from './BMICalculator';
+export { default as AgeCalculator } from './AgeCalculator';
+export { default as QRCodeGenerator } from './QRCodeGenerator';
+export { default as TextUtils } from './TextUtils';
+export { default as UnitConverter } from './UnitConverter';
+export { default as TodoList } from './Todolist';
+export { default as About } from './About';
+export { default as Contact } from './Contact';

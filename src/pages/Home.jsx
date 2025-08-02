@@ -1,0 +1,105 @@
+import { Link } from "react-router-dom";
+import {
+  FaCompress,
+  FaFilePdf,
+  FaExchangeAlt,
+  FaHeartbeat,
+  FaBirthdayCake,
+  FaQrcode,
+  FaFont
+} from "react-icons/fa";
+import { FaMoneyBillTransfer, FaPenNib } from "react-icons/fa6";
+
+// Tool Configurations
+const tools = [
+  {
+    name: "Compress Image",
+    path: "/compress-image",
+    icon: <FaCompress className="text-3xl text-blue-500 dark:text-blue-400" />,
+    description: "Reduce image size without quality loss.",
+  },
+  {
+    name: "Merge PDF",
+    path: "/merge-pdf",
+    icon: <FaFilePdf className="text-3xl text-red-500 dark:text-red-400" />,
+    description: "Combine multiple PDFs into one.",
+  },
+  {
+    name: "File Converter",
+    path: "/file-converter",
+    icon: <FaExchangeAlt className="text-3xl text-green-500 dark:text-green-400" />,
+    description: "Convert between JPG, PNG, PDF, and DOC.",
+  },
+  {
+    name: "BMI Calculator",
+    path: "/bmi",
+    icon: <FaHeartbeat className="text-3xl text-pink-500 dark:text-pink-400" />,
+    description: "Calculate your Body Mass Index.",
+  },
+  {
+    name: "Age Calculator",
+    path: "/age",
+    icon: <FaBirthdayCake className="text-3xl text-yellow-500 dark:text-yellow-300" />,
+    description: "Calculate your exact age from DOB.",
+  },
+  {
+    name: "QR Code Generator",
+    path: "/qr",
+    icon: <FaQrcode className="text-3xl text-purple-500 dark:text-purple-400" />,
+    description: "Generate QR Codes for your text/URL.",
+  },
+  {
+    name: "Text Utility",
+    path: "/text-utils",
+    icon: <FaFont className="text-3xl text-indigo-500 dark:text-indigo-400" />,
+    description: "Generate and format clean text.",
+  },
+  {
+    name: "Unit Converter",
+    path: "/unit-converter",
+    icon: <FaMoneyBillTransfer className="text-3xl text-emerald-500 dark:text-emerald-400" />,
+    description: "Convert between different units.",
+  },
+  {
+    name: "To Do List",
+    path: "/todo",
+    icon: <FaPenNib className="text-3xl text-orange-500 dark:text-orange-400" />,
+    description: "Manage your tasks and to-dos.",
+  },
+];
+
+export default function Home() {
+  return (
+    <div className="max-w-6xl mx-auto px-4 py-10">
+      {/* Hero Section */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
+          Welcome to SmartX
+        </h1>
+        <p className="text-lg text-gray-600 dark:text-gray-300">
+          All-in-one utility tools for students, professionals, and seniors.
+        </p>
+      </div>
+
+      {/* Tools Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.map((tool) => (
+          <div
+            key={tool.name}
+            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
+          >
+            <div className="mb-4">{tool.icon}</div>
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{tool.name}</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{tool.description}</p>
+            <Link
+              to={tool.path}
+              className="mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+            >
+              Launch
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
