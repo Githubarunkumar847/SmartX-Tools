@@ -59,8 +59,8 @@ export default function Contact() {
           <Globe className="text-blue-500 w-5 h-5" />
           <span>
             <strong>Website:</strong>{' '}
-            <a href="https://smartx-tools.web.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-              smartx-tools.web.app
+            <a href="https://smartx-tools.netlify.app" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              smartx-tools.netlify.app
             </a>
             <span className="ml-1 text-sm text-gray-500">(under development)</span>
           </span>
