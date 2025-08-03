@@ -10,3 +10,4 @@ export { default as UnitConverter } from './UnitConverter';
 export { default as TodoList } from './Todolist';
 export { default as About } from './About';
 export { default as Contact } from './Contact';
+export { default as ThankYou } from './ThankYou';

@@ -10,7 +10,6 @@ function AgeCalculator() {
     const birth = new Date(birthDate);
     const today = new Date();
 
-    // Calculate difference in years
     let years = today.getFullYear() - birth.getFullYear();
     let months = today.getMonth() - birth.getMonth();
     let days = today.getDate() - birth.getDate();
@@ -28,7 +27,6 @@ function AgeCalculator() {
     const totalDays = Math.floor((today - birth) / (1000 * 60 * 60 * 24));
     const totalWeeks = Math.floor(totalDays / 7);
 
-    // Calculate next birthday
     const nextBirthday = new Date(today.getFullYear(), birth.getMonth(), birth.getDate());
     if (nextBirthday < today) {
       nextBirthday.setFullYear(today.getFullYear() + 1);
@@ -50,38 +48,50 @@ function AgeCalculator() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 shadow-md rounded-lg bg-white dark:bg-gray-900">
-      <h2 className="text-2xl font-bold mb-4 text-center">Age Calculator</h2>
+    <div className="flex justify-center items-center min-h-screen px-4 py-6">
+      <div className="w-full max-w-xl bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 transition-all duration-300">
+        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800 dark:text-gray-100">
+          🎂 Age Calculator
+        </h2>
 
-      <div className="mb-4">
-        <label className="block mb-1">Enter your birthdate:</label>
-        <input
-          type="date"
-          value={birthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-          className="w-full p-2 border rounded"
-        />
-      </div>
-
-      <button
-        onClick={calculateAge}
-        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 w-full"
-      >
-        Calculate Age
-      </button>
-
-      {ageData && (
-        <div className="mt-6 text-center space-y-2">
-          <p className="text-lg font-semibold">
-            You are {ageData.years} years, {ageData.months} months, and {ageData.days} days old
-          </p>
-          <p className="text-sm text-gray-700">Total Days: {ageData.totalDays.toLocaleString()}</p>
-          <p className="text-sm text-gray-700">Total Weeks: {ageData.totalWeeks.toLocaleString()}</p>
-          <p className="text-sm text-blue-600 mt-2 font-medium">
-            ⏳ {ageData.monthsToNextBirthday} months and {ageData.remainingDays} days left for your next birthday!
-          </p>
+        <div className="mb-5">
+          <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+            Enter your birthdate:
+          </label>
+          <input
+            type="date"
+            value={birthDate}
+            onChange={(e) => setBirthDate(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-800 dark:text-white bg-gray-50 dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
         </div>
-      )}
+
+        <button
+          onClick={calculateAge}
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md transition-colors"
+        >
+          Calculate Age
+        </button>
+
+        {ageData && (
+          <div className="mt-8 text-center space-y-3">
+            <p className="text-lg font-semibold text-gray-800 dark:text-white">
+              You are <span className="text-green-600">{ageData.years}</span> years,{' '}
+              <span className="text-green-600">{ageData.months}</span> months, and{' '}
+              <span className="text-green-600">{ageData.days}</span> days old
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              📅 Total Days: <strong>{ageData.totalDays.toLocaleString()}</strong>
+            </p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              📆 Total Weeks: <strong>{ageData.totalWeeks.toLocaleString()}</strong>
+            </p>
+            <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mt-2">
+              ⏳ {ageData.monthsToNextBirthday} months and {ageData.remainingDays} days until your next birthday!
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

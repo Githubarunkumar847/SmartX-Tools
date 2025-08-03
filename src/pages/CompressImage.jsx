@@ -7,6 +7,7 @@ export default function CompressImage() {
   const [originalSize, setOriginalSize] = useState(0);
   const [compressedSize, setCompressedSize] = useState(0);
   const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -23,6 +24,7 @@ export default function CompressImage() {
   const handleCompress = () => {
     if (!selectedFile) return;
 
+    setLoading(true);
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     const img = new Image();
@@ -35,9 +37,9 @@ export default function CompressImage() {
 
       canvas.toBlob(
         (blob) => {
+          setLoading(false);
           if (!blob) return;
 
-          // Only update if compressed size is smaller
           if (blob.size < selectedFile.size) {
             const url = URL.createObjectURL(blob);
             setCompressedUrl(url);
@@ -46,7 +48,7 @@ export default function CompressImage() {
           } else {
             setCompressedUrl(null);
             setCompressedSize(0);
-            setMessage("Compression not effective. File size would increase.");
+            setMessage("⚠️ Compression not effective. File size would increase.");
           }
         },
         "image/jpeg",
@@ -60,41 +62,54 @@ export default function CompressImage() {
   const formatSize = (bytes) => (bytes / 1024).toFixed(2) + " KB";
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold mb-6 text-center text-blue-700">Image Compressor</h1>
+    <div className="max-w-5xl mx-auto px-4 py-10 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
+      <h1 className="text-3xl font-bold mb-6 text-center text-blue-700 dark:text-blue-400">
+        Image Compressor
+      </h1>
 
-      <div className="mb-6 flex flex-col items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-center mb-6">
         <input
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          className="block w-full border p-2 rounded-md"
+          className="w-full sm:w-auto border dark:border-gray-700 p-2 rounded-md bg-gray-100 dark:bg-gray-800 dark:text-white"
         />
         <button
           onClick={handleCompress}
-          disabled={!selectedFile}
-          className="bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition disabled:opacity-50"
+          disabled={!selectedFile || loading}
+          className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded transition disabled:opacity-50"
         >
-          Compress Image
+          {loading ? (
+            <span className="flex items-center justify-center gap-2">
+              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+              Compressing...
+            </span>
+          ) : (
+            "Compress Image"
+          )}
         </button>
       </div>
 
       {originalUrl && (
-        <div className="grid md:grid-cols-2 gap-8 mt-8">
+        <div className="grid gap-8 mt-8 md:grid-cols-2">
           <div className="text-center">
-            <h2 className="text-lg font-semibold mb-2 text-gray-700">Original Image</h2>
+            <h2 className="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300">
+              Original Image
+            </h2>
             <img
               src={originalUrl}
               alt="Original"
               className="max-w-full max-h-80 mx-auto rounded shadow"
             />
-            <p className="mt-2 text-sm text-gray-600">
+            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
               Size: <strong>{formatSize(originalSize)}</strong>
             </p>
           </div>
 
           <div className="text-center">
-            <h2 className="text-lg font-semibold mb-2 text-gray-700">Compressed Image</h2>
+            <h2 className="text-lg font-semibold mb-2 text-gray-700 dark:text-gray-300">
+              Compressed Image
+            </h2>
             {compressedUrl ? (
               <>
                 <img
@@ -102,19 +117,19 @@ export default function CompressImage() {
                   alt="Compressed"
                   className="max-w-full max-h-80 mx-auto rounded shadow"
                 />
-                <p className="mt-2 text-sm text-gray-600">
+                <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                   Size: <strong>{formatSize(compressedSize)}</strong>
                 </p>
                 <a
                   href={compressedUrl}
                   download="compressed.jpg"
-                  className="mt-3 inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                  className="mt-4 inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
                 >
                   Download
                 </a>
               </>
             ) : (
-              <p className="text-red-500 font-medium">{message || "Click Compress to start."}</p>
+              <p className="text-red-600 dark:text-red-400 font-medium mt-4">{message}</p>
             )}
           </div>
         </div>

@@ -6,7 +6,7 @@ import {
   FaHeartbeat,
   FaBirthdayCake,
   FaQrcode,
-  FaFont
+  FaFont,
 } from "react-icons/fa";
 import { FaMoneyBillTransfer, FaPenNib } from "react-icons/fa6";
 
@@ -70,11 +70,11 @@ const tools = [
 
 export default function Home() {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white mb-4">
-          Welcome to SmartX
+      <div className="text-center mb-16">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          Welcome to <span className="text-blue-600 dark:text-blue-400">SmartX</span>
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300">
           All-in-one utility tools for students, professionals, and seniors.
@@ -86,20 +86,22 @@ export default function Home() {
         {tools.map((tool) => (
           <div
             key={tool.name}
-            className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
+            className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow hover:shadow-xl transition-all duration-300 flex flex-col items-center text-center"
           >
             <div className="mb-4">{tool.icon}</div>
-            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{tool.name}</h2>
+            <h2 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">
+              {tool.name}
+            </h2>
             <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">{tool.description}</p>
             <Link
               to={tool.path}
-              className="mt-auto bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+              className="mt-auto inline-block bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-md transition-all text-sm font-medium"
             >
               Launch
             </Link>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
