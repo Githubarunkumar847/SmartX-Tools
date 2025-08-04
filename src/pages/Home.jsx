@@ -7,6 +7,7 @@ import {
   FaBirthdayCake,
   FaQrcode,
   FaFont,
+  FaAtom,
 } from "react-icons/fa";
 import { FaMoneyBillTransfer, FaPenNib } from "react-icons/fa6";
 
@@ -65,6 +66,12 @@ const tools = [
     path: "/todo",
     icon: <FaPenNib className="text-3xl text-orange-500 dark:text-orange-400" />,
     description: "Manage your tasks and to-dos.",
+  },
+   {
+    name: "Periodic Table",
+    path: "/periodictable",
+    icon: <FaAtom className="text-3xl text-orange-500 dark:text-orange-400" />,
+    description: "Explore the periodic table.",
   },
 ];
 

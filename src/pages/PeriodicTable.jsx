@@ -170,6 +170,7 @@ const PeriodicTable = () => {
                   src={selectedElement.bohr_model_3d}
                   alt="3D Model"
                   auto-rotate
+                  rotation-per-second="60deg"
                   camera-controls
                   style={{ width: "100%", height: "100%" }}
                 ></model-viewer>
@@ -177,7 +178,7 @@ const PeriodicTable = () => {
                 <img
                   src={selectedElement.bohr_model_image}
                   alt="Bohr model"
-                  className="w-full h-full object-contain animate-zoom"
+                  className="w-full h-full object-contain animate-spin-slow"
                 />
               ) : null}
               <div className="absolute inset-y-0 left-0 flex items-center">
