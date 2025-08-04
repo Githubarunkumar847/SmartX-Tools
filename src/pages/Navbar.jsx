@@ -15,6 +15,7 @@ const navLinks = [
   { to: '/todo', label: 'To Do List' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
+  { to: '/periodictable', label: 'PeriodicTable'},
 ];
 
 export default function Navbar() {

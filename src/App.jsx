@@ -17,6 +17,8 @@ import {
   Contact,
   ThankYou,
 } from './pages';
+import { label } from 'framer-motion/client';
+import PeriodicTable from './pages/PeriodicTable';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
@@ -36,6 +38,7 @@ const App = () => {
     { to: '/todo', label: 'To-Do List' },
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' },
+    { to: '/periodictable', label: 'PeriodicTable' },
   ];
 
   useEffect(() => {
@@ -83,6 +86,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/thankyou" element={<ThankYou />} />
+          <Route path="/periodictable" element={<PeriodicTable />}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
