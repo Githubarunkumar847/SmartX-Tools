@@ -11,3 +11,4 @@ export { default as TodoList } from './Todolist';
 export { default as About } from './About';
 export { default as Contact } from './Contact';
 export { default as ThankYou } from './ThankYou';
+export { default as LatexRenderer } from './LatexRenderer';

@@ -16,6 +16,7 @@ import {
   About,
   Contact,
   ThankYou,
+  LatexRenderer,
 } from './pages';
 import { label } from 'framer-motion/client';
 import PeriodicTable from './pages/PeriodicTable';
@@ -35,10 +36,11 @@ const App = () => {
     { to: '/qr', label: 'QR Code Generator' },
     { to: '/text-utils', label: 'Text Utilities' },
     { to: '/unit-converter', label: 'Unit Converter' },
+    { to: '/periodictable', label: 'PeriodicTable' },
+    { to: '/latex', label: 'Latex Renderer' },
     { to: '/todo', label: 'To-Do List' },
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' },
-    { to: '/periodictable', label: 'PeriodicTable' },
   ];
 
   useEffect(() => {
@@ -87,6 +89,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/thankyou" element={<ThankYou />} />
           <Route path="/periodictable" element={<PeriodicTable />}/>
+          <Route path="/latex" element={<LatexRenderer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -8,6 +8,7 @@ import {
   FaQrcode,
   FaFont,
   FaAtom,
+  FaSubscript,
 } from "react-icons/fa";
 import { FaMoneyBillTransfer, FaPenNib } from "react-icons/fa6";
 
@@ -62,16 +63,22 @@ const tools = [
     description: "Convert between different units.",
   },
   {
-    name: "To Do List",
-    path: "/todo",
-    icon: <FaPenNib className="text-3xl text-orange-500 dark:text-orange-400" />,
-    description: "Manage your tasks and to-dos.",
+    name: "LatexViewer",
+    path: "/latex",
+    icon: <FaSubscript className="text-3xl text-cyan-500 dark:text-cyan-300" />,
+    description: "Markdown + LaTeX Viewer.",
   },
-   {
+  {
     name: "Periodic Table",
     path: "/periodictable",
     icon: <FaAtom className="text-3xl text-orange-500 dark:text-orange-400" />,
     description: "Explore the periodic table.",
+  },
+  {
+    name: "To Do List",
+    path: "/todo",
+    icon: <FaPenNib className="text-3xl text-orange-500 dark:text-orange-400" />,
+    description: "Manage your tasks and to-dos.",
   },
 ];
 

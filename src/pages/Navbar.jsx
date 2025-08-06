@@ -12,10 +12,11 @@ const navLinks = [
   { to: '/qr', label: 'Generate QR' },
   { to: '/text-utils', label: 'Generate Text' },
   { to: '/unit-converter', label: 'Unit Convert' },
+  { to: '/latex', label: 'LatexRenderer'},
+  { to: '/periodictable', label: 'PeriodicTable'},
   { to: '/todo', label: 'To Do List' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
-  { to: '/periodictable', label: 'PeriodicTable'},
 ];
 
 export default function Navbar() {
